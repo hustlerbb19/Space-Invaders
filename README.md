@@ -13,4 +13,8 @@ Our model architecture is inspired by the [DeepMind Nature publication](https://
 
 To train our ANN, we'll leverage the RMSProp SGD learning-rate optimizer, using the hyperparameters from the [DeepMind Nature paper](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf) (learning_rate = 2.5 * 10 <sup>-4</sup>, ρ = 0.95, ε = .01). We'll skip the "reward" clipping approach used by the DeepMind folks, instead using Huber loss as our objective function (rather than Mean Square Error). For additional performance improvement, a [Double DQN approach](https://arxiv.org/pdf/1509.06461.pdf) has been implemented, with core model weights copied to the training model every 2,000 training steps (6,000 played frames) for a total of 100 copies overall.  
 ## Performance
-![img](https://raw.githubusercontent.com/hustlerbb19/Space-Invaders/master/ddqn_model_output/Clipped%20Learning%20Curve.png)
+![Learning Curve](https://raw.githubusercontent.com/hustlerbb19/Space-Invaders/master/ddqn_model_output/Clipped%20Learning%20Curve.png)
+
+![Scoring Curve](https://raw.githubusercontent.com/hustlerbb19/Space-Invaders/master/ddqn_model_output/Scoring%20Curve.png)
+
+![Survival Curve](https://raw.githubusercontent.com/hustlerbb19/Space-Invaders/master/ddqn_model_output/Survival%20Curve.png)
