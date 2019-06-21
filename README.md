@@ -13,12 +13,14 @@ Our model architecture is inspired by the [DeepMind Nature publication](https://
 
 To train our ANN, we'll leverage the RMSProp SGD learning-rate optimizer, using the hyperparameters from the [DeepMind Nature paper](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf) (learning_rate = 2.5 * 10 <sup>-4</sup>, ρ = 0.95, ε = .01). We'll skip the "reward" clipping approach used by the DeepMind folks, instead using Huber loss as our objective function (rather than Mean Square Error). For additional performance improvement, a [Double DQN approach](https://arxiv.org/pdf/1509.06461.pdf) has been implemented, with core model weights copied to the training model every 2,000 training steps (6,000 played frames) for a total of 100 copies overall. We'll also allow our agent to play Space Invaders fully randomly for 5% of overall runtime (10,000 frames) before training begins, in order to collect sufficiently diverse experience for our model to begin training against.
 ## Performance
+After ε-greedy learning, the RL agent trains quite effectively over the subsequent ~90K training frames. The model experiences some noisy training over the next ~15K frames, but this effect is flattened out over the final several training episodes.
+
 ![Learning Curve](https://raw.githubusercontent.com/hustlerbb19/Space-Invaders/master/Assets/Clipped%20Learning%20Curve.png)
 
-After ε-greedy learning, the RL agent trains quite effectively over the subsequent ~90K training frames. The model experiences some noisy training over the next ~15K frames, but this effect is flattened out over the final several training episodes.
+Consistent with our observed training performance, agent game scoring ramps with improving score over the first ~200 training episodes, dropping in score between episode 200 (starting around frame 160K) and 225 (starting near frame 180K). before recovering for the final 25 episodes. 
 
 ![Scoring Curve](https://raw.githubusercontent.com/hustlerbb19/Space-Invaders/master/Assets/Scoring%20Curve.png)
 
-Consistent with our observed training performance, agent game scoring ramps with improving score over the first ~200 training episodes, dropping in score between episode 200 (starting around frame 160K) and 225 (starting near frame 180K). before recovering for the final 25 episodes. This behavior is roughly mimicked in observed agent survival performance (game duration):
+This behavior is roughly mimicked in observed agent survival performance (game duration):
 
 ![Survival Curve](https://raw.githubusercontent.com/hustlerbb19/Space-Invaders/master/Assets/Survival%20Curve.png)
