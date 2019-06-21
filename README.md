@@ -17,10 +17,10 @@ After ε-greedy learning, the RL agent trains quite effectively over the subsequ
 
 ![Learning Curve](https://raw.githubusercontent.com/hustlerbb19/Space-Invaders/master/Assets/Clipped%20Learning%20Curve.png)
 
-Consistent with our observed training performance, agent game scoring ramps with improving score over the first ~200 training episodes, dropping in score between episode 200 (starting around frame 160K) and 225 (starting near frame 180K). before recovering for the final 25 episodes. 
+Consistent with our observed training performance, agent game scoring ramps with improving score over the first ~200 training episodes, with substantial gains from Game 95 (the first full episode with our minimum ε value) to about Game 200 (frame 160K). Scoring performance declines for the next 25 episodes (consistent with the training loss anomaly), before recovering for the final 25 episodes. 
 
 ![Scoring Curve](https://raw.githubusercontent.com/hustlerbb19/Space-Invaders/master/Assets/Scoring%20Curve.png)
 
-This behavior is roughly mimicked in observed agent survival performance (game duration):
+Similar behavior is observed in survival performance (game duration). Averaged game length is quite stable over ε-greedy, ramping quite quickly once agent training performance takes off. Game duration falls precipitously over the fallow agent performance period (Game 200 through Game 225, re-stabilizing over the final 25 episodes as loss improves.
 
 ![Survival Curve](https://raw.githubusercontent.com/hustlerbb19/Space-Invaders/master/Assets/Survival%20Curve.png)
