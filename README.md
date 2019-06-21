@@ -5,6 +5,7 @@ To train our RL agent, we pass a series of game
 
 To process our image observations, we'll crop our image to the playable field of the Space Invaders game (roughly the space between the bottom of the agent-controlled spaceship and the mid-score area where the "mothership" will appear, downsample our image by 2x (to dimension 92 x 80, convert our observed pixel values to grey-scale, and scale values to [0,1].
 
+![Processed Screen Image](https://raw.githubusercontent.com/hustlerbb19/Space-Invaders/master/DDQN_model_output/Processed%20Screen%20Image.png)
 
 Our model architecture is inspired by the [DeepMind Nature publication](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf). It consists of three hidden CNN layers (afirst 32-filter CNN layer of 8x8 convolutions passed over our images at stride 4, a 64-filter CNN layer of 4x4 convolutions scanning at stride 2, and lastly second 64-filter CNN layer of 3x3 convolutions proceeding at stride 1) followed by a fully connected 512-node ReLU activation layer, and finally  6-output layer (mapping to the 6 playable actions  of the SpaceInvaders game.
 
